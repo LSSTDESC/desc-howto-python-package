@@ -1,7 +1,7 @@
 [project]
 name = "eac-test"
 description = "Test package to test packing"
-readme = "README.rst"
+readme = "README.md"
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
 authors = [
@@ -38,6 +38,9 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 write_to = "src/eac_test/_version.py"
+
+[tool.setuptools.package-data]
+"eac_test/data" = ["*.txt"]
 
 [tool.coverage.run]
 source = ["eac_test"]
@@ -105,4 +108,3 @@ addopts = [
     "--cov-branch",
     "--cov-report=html"
 ]
-flake8-ignore = "E203"
