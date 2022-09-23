@@ -2,7 +2,7 @@
 
 ### Creating a python package
 
-Start of by going to the DESC github [repository creation
+Start of by going to the DESC GitHub [repository creation
 page](https://github.com/organizations/LSSTDESC/repositories/new) 
 
 Pick sensible answers for the various questions and then click on the 
@@ -14,15 +14,16 @@ Here are some sensible answers:
 
 Pro-tip: navigate to the page for your newly created repository, e.g., 
 [eac-test](https://github.com/LSSTDESC/eac-test) and click on the
-"Code" pull down menu and click on the two little box next to the URL
+"Code" pull down menu and click on the two little boxes next to the URL
 to copy the URL to your clipboard.
 
 <img src="get_code.png" alt="Get code" width="500"/>
 
 Open a terminal on your computer and navigate to the place you want to
-install the code, then clone the code.
+install the package (such as $HOME/software/desc/), then clone the repository.
 
-	cd <somewhere>
+
+	cd $HOME/software/desc # Or where you think that code wants to live
 	git clone https://github.com/LSSTDESC/<package>.git
 	cd <package>
 
@@ -35,10 +36,10 @@ Make the basic package structure
 	mkdir tests/<package> # This is where your tests go
 	mkdir docs
 	mkdir .github
-	mkdir .github/workflows # This is where the github actions go 
+	mkdir .github/workflows # This is where the GitHub actions go 
 	
 	
-Add the python packaging and configuration stuff, you can copy then
+Add the python packaging and configuration stuff, you can copy these files
 from this package to get started.
 
 	pyproject.toml # required
@@ -48,7 +49,7 @@ from this package to get started.
 	.github/workflows/pypi.yml # really useful to automatically releases
 	
 	
-Edit pyproject.toml, you will need to do at minimum:
+Edit pyproject.toml.  You will need to make several changes (substituting your repository name, etc.):
 
 Change these fields in the '[project]' block:
 
@@ -115,10 +116,11 @@ following the vX.X.X convention, e.g., v0.0.0 and pick a name and add
 notes (or click the "Generate release notes") button.  Then click
 "Publish release".
 
-At this github will make the tag, and try to push the release to
+At this point GitHub will make the tag, and try to push the release to
 pypi, but fail, because you have to do that by hand.
 
-So, you will have to make yourself a pypi account.
+So, you will have to make yourself a pypi account.  You can do that at
+[https://pypi.org/account/register/](https://pypi.org/account/register/)
 
 Then update your release to use the latest tag and build it locally
 
@@ -141,8 +143,8 @@ for <your package". Them put in some sensible values, e.g.,:
 
 Make sure to copy the token to your clipboard.
 
-Then, on github navigate to the secrets page for your package
-(click settings -> secrets -> actions -> new repository secret) or go to
+Then, on GitHub navigate to the secrets page for your package
+(click Settings -> Secrets -> Actions -> New repository secret) or go to
 https://github.com/LSSTDESC/<your_package>/settings/secrets/actions/new
 
 <img src="github_secret.png" alt="Get code" width="500"/>
@@ -154,7 +156,7 @@ At this point, any time you make a new release, your package should
 automatically get pushed onto pypi.
 
 
-<!--  LocalWords:  github eac-test mdkir pyproject.toml setup.py cov
+<!--  LocalWords:  eac-test mdkir pyproject.toml setup.py cov
  -->
 <!--  LocalWords:  numpy tool.setuptools_scm eac_test.data eac_test
  -->
