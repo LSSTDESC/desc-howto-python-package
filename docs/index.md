@@ -1,4 +1,4 @@
-# Building and maintaing a python package for DESC
+# Building and maintaining a python package for DESC
 
 ### Creating a python package
 
@@ -12,7 +12,7 @@ Here are some sensible answers:
 
 <img src="create_package.png" alt="Create Package" width="500"/>
 
-Pro-tip: naviagate to the page for your newly created repository, e.g., 
+Pro-tip: navigate to the page for your newly created repository, e.g., 
 [eac-test](https://github.com/LSSTDESC/eac-test) and click on the
 "Code" pull down menu and click on the two little box next to the URL
 to copy the URL to your clipboard.
@@ -86,6 +86,79 @@ Point the coverage tools at the right code
 		"--cov=eac_test",
 
 
-Edit .github/workflows/main.yml, you will need to do at minimum:
+Add your code and tests to 'src' and 'tests' directories.
+
+If you want the `__version__` set automatically, add these lines to
+your package `__init__.py`  file.
+
+	def find_version():
+		"""Find the version"""
+		# setuptools_scm should install a
+		# file _version alongside this one.
+		from . import _version
+		return _version.version
+	
+	try:
+		__version__ = find_version()
+	except ImportError: # pragma: no cover
+		__version__ = "unknown"
 
 
+### Creating a tag and putting the package on pypi
+
+You can navigate directly to the new release page for your package, for
+example
+[https://github.com/LSSTDESC/eac-test/releases/new](https://github.com/LSSTDESC/eac-test/releases/new)
+
+From there, click on "Choose a tag" pulldown menu and pick a tag
+following the vX.X.X convention, e.g., v0.0.0 and pick a name and add
+notes (or click the "Generate release notes") button.  Then click
+"Publish release".
+
+At this github will make the tag, and try to push the release to
+pypi, but fail, because you have to do that by hand.
+
+So, you will have to make yourself a pypi account.
+
+Then update your release to use the latest tag and build it locally
+
+	pip install twine
+	git pull
+	python setup.py sdist bdist_wheel
+	twine upload dist/*
+	
+
+Then navigate to your pypi package managing page:
+[https://pypi.org/manage/projects/](https://pypi.org/manage/projects/)
+
+<img src="pypi_packages.png" alt="Get code" width="500"/>
+
+
+Select "Manage" for your package, then "Settings", the "Create a token
+for <your package". Them put in some sensible values, e.g.,:
+
+<img src="pypi_token.png" alt="Get code" width="500"/>
+
+Make sure to copy the token to your clipboard.
+
+Then, on github navigate to the secrets page for your package
+(click settings -> secrets -> actions -> new repository secret) or go to
+https://github.com/LSSTDESC/<your_package>/settings/secrets/actions/new
+
+<img src="github_secret.png" alt="Get code" width="500"/>
+
+For Name* use `PYPI_API_TOKEN` and paste the token into the Secret*
+field.
+
+At this point, any time you make a new release, your package should
+automatically get pushed onto pypi.
+
+
+<!--  LocalWords:  github eac-test mdkir pyproject.toml setup.py cov
+ -->
+<!--  LocalWords:  numpy tool.setuptools_scm eac_test.data eac_test
+ -->
+<!--  LocalWords:  addopts __init__.py setuptools_scm pypi sdist
+ -->
+<!--  LocalWords:  bdist_wheel
+ -->
