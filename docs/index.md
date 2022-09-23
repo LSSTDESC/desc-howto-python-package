@@ -82,7 +82,10 @@ Point the coverage tools at the right code
 	
 	
 	[tool.pytest.ini_options]
-		addopts = [
+	addopts = [
 		"--cov=eac_test",
+
+
+Edit .github/workflows/main.yml, you will need to do at minimum:
 
 
