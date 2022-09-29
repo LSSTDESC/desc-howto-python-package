@@ -1,8 +1,8 @@
 
 import os
-import eac_test
+import desc_howto_python_package
 
-TOPDIR = os.path.abspath(os.path.dirname(eac_test.__file__))
+TOPDIR = os.path.abspath(os.path.dirname(desc_howto_python_package.__file__))
 
 def test_data():
 

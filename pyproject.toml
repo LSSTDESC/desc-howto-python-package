@@ -1,6 +1,6 @@
 [project]
-name = "eac-test"
-description = "Test package to test packing"
+name = "desc-howto-python-package"
+description = "HOWTO on building a python package for DESC"
 readme = "README.md"
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
@@ -37,13 +37,13 @@ requires = ["setuptools>=61", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
-write_to = "src/eac_test/_version.py"
+write_to = "src/desc_howto_python_package/_version.py"
 
 [tool.setuptools.package-data]
-"eac_test.data" = ["*.txt"]
+"desc_howto_python_package.data" = ["*.txt"]
 
 [tool.coverage.run]
-source = ["eac_test"]
+source = ["desc_howto_python_package"]
 branch = true
 
 [tool.coverage.report]
@@ -104,7 +104,7 @@ line_length = 110
 
 [tool.pytest.ini_options]
 addopts = [
-    "--cov=eac_test",
+    "--cov=desc_howto_python_package",
     "--cov-branch",
     "--cov-report=html"
 ]

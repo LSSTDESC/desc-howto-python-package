@@ -1,5 +1,5 @@
 
-from eac_test.hello_world import hello, waste_cpu
+from desc_howto_python_package.hello_world import hello, waste_cpu
 
 
 def test_hello():
