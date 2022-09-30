@@ -10,3 +10,6 @@ Specifically, it:
 3. can accommodate automated code checking, testing, and release creation
 4. is pip-installable
 
+
+<!--  LocalWords:  desc-howto-python-package
+ -->
