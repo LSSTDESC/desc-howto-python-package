@@ -167,11 +167,11 @@ At this point, any time you make a new release, your package should
 automatically get pushed onto pypi.
 
 
-<!--  LocalWords:  eac-test mdkir pyproject.toml setup.py cov
+<!--  LocalWords:  eac-test mdkir pyproject.toml setup.py cov github
  -->
 <!--  LocalWords:  numpy tool.setuptools_scm eac_test.data eac_test
  -->
 <!--  LocalWords:  addopts __init__.py setuptools_scm pypi sdist
  -->
-<!--  LocalWords:  bdist_wheel
+<!--  LocalWords:  bdist_wheel __init__.py
  -->
