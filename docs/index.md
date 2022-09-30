@@ -1,5 +1,16 @@
 # Building and maintaining a python package for DESC
 
+### Purpose
+
+The information below will help you create a package for Python source
+code in the DESC GitHub repository which:
+
+1. can be built using standard tools
+2. handles versioning sensibly
+3. can accommodate automated code checking, testing, and release creation
+4. is pip-installable
+
+
 ### Creating a python package
 
 Start of by going to the DESC GitHub [repository creation
