@@ -24,7 +24,7 @@ Here are some sensible answers:
 <img src="create_package.png" alt="Create Package" width="500"/>
 
 Pro-tip: navigate to the page for your newly created repository, e.g., 
-[eac-test](https://github.com/LSSTDESC/eac-test) and click on the
+[desc-howto-python-package](https://github.com/LSSTDESC/desc-howto-python-package) and click on the
 "Code" pull down menu and click on the two little boxes next to the URL
 to copy the URL to your clipboard.
 
@@ -65,7 +65,7 @@ Edit pyproject.toml.  You will need to make several changes (substituting your r
 Change these fields in the '[project]' block:
 
 	[project]
-	name = "eac-test"
+	name = "desc-howto-python-package"
 	description = "Test package to test packing"
 	authors = [
 		{ name = "Eric Charles", email = "echarles@slac.stanford.edu" }
@@ -78,24 +78,24 @@ Change this field in the setup block to enable versioning based on the
 git tag.
 
 	[tool.setuptools_scm]
-	write_to = "src/eac_test/_version.py"
+	write_to = "src/desc_howto_python_package/_version.py"
 	
 If you have data you would like to package with the source code, add a
 	block like this:
 	
 	[tool.setuptools.package-data]
-	"eac_test.data" = ["*.txt"]
+	"desc_howto_python_package.data" = ["*.txt"]
 
 
 Point the coverage tools at the right code
 
 	[tool.coverage.run]
-	source = ["eac_test"]
+	source = ["desc_howto_python_package"]
 	
 	
 	[tool.pytest.ini_options]
 	addopts = [
-		"--cov=eac_test",
+		"--cov=desc_howto_python_package",
 
 
 Add your code and tests to 'src' and 'tests' directories.
@@ -120,7 +120,7 @@ your package `__init__.py`  file.
 
 You can navigate directly to the new release page for your package, for
 example
-[https://github.com/LSSTDESC/eac-test/releases/new](https://github.com/LSSTDESC/eac-test/releases/new)
+[https://github.com/LSSTDESC/desc-howto-python-package/releases/new](https://github.com/LSSTDESC/desc-howto-python-package/releases/new)
 
 From there, click on "Choose a tag" pulldown menu and pick a tag
 following the vX.X.X convention, e.g., v0.0.0 and pick a name and add
@@ -167,11 +167,47 @@ At this point, any time you make a new release, your package should
 automatically get pushed onto pypi.
 
 
-<!--  LocalWords:  eac-test mdkir pyproject.toml setup.py cov github
+### Setting up documentation of GitHub pages
+
+You can setup the GitHub repository to export documentation to the
+GitHub pages system with a few simple steps.   Following these steps
+will allow you to write markdown in the "docs" area of your repository
+which will be rendered into pages available at, e.g., :
+[https://lsstdesc.org/desc-howto-python-package/](https://lsstdesc.org/desc-howto-python-package/)
+
+1. Start off by making and committing a "docs/index.md" file with a few
+   lines just to make sure you have something to test.  And make sure
+   that you push that to your main branch.
+
+2. Navigate to the settings page for your repository, e.g., 
+[https://github.com/LSSTDESC/desc-howto-python-package/settings](https://github.com/LSSTDESC/desc-howto-python-package/settings)
+
+3. Select "Pages" from the left sidebar
+
+<img src="pages.png" alt="Get code" width="100"/>
+
+4. You should have a page that looks like this:
+
+<img src="setup_pages.png" alt="Get code" width="500"/>
+
+5. Leave "Source -> Deploy from a branch" selected
+
+6. Under "Branch" switch the selection from "None" to "main" and make
+   sure to select "/docs" folder, then press "Save".
+   
+7. Once it has deployed the documentation it will look like this:
+
+<img src="setup_pages_after.png" alt="Get code" width="500"/>
+
+More info is available on the GitHub instructions pages: [https://docs.github.com/en/pages/quickstart](https://docs.github.com/en/pages/quickstart)
+
+
+
+<!--  LocalWords:  desc-howto-python-package mdkir pyproject.toml setup.py cov github
  -->
-<!--  LocalWords:  numpy tool.setuptools_scm eac_test.data eac_test
+<!--  LocalWords:  numpy tool.setuptools_scm desc_howto_python_package.data desc_howto_python_package
  -->
 <!--  LocalWords:  addopts __init__.py setuptools_scm pypi sdist
  -->
-<!--  LocalWords:  bdist_wheel __init__.py
+<!--  LocalWords:  bdist_wheel __init__.py __init__.py
  -->
